@@ -37,8 +37,8 @@ async fn handle_connection(
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error + Send + Sync>> {
     let (bcast_tx, _) = broadcast::channel(16);
-    let listener = TcpListener::bind("127.0.0.1:2000").await?;
-    println!("Listening on port 2000");
+    let listener = TcpListener::bind("127.0.0.1:8888").await?;
+    println!("Listening on port 8888");
 
     loop {
         let (socket, addr) = listener.accept().await?;
