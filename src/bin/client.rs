@@ -26,7 +26,8 @@ async fn main() -> Result<(), tokio_websockets::Error> {
                 match msg {
                     Some(Ok(m)) => {
                         if let Some(text) = m.as_text() {
-                            println!("Received: {text}");
+                            // Display with your name prefix
+                            println!("Ammar - From server: {text}");
                         }
                     }
                     _ => break,

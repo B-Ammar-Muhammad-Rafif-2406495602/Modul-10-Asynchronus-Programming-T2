@@ -28,3 +28,19 @@ the client using Uri::from_static("ws://127.0.0.1:8888"). The server side
 uses tokio-websockets's ServerBuilder which handles the WebSocket handshake 
 automatically over the TCP connection so the protocol is implied on the 
 server side by using that library.
+
+## Experiment 2.3: Small changes, add IP and Port
+
+![ss_2](./ss_2.png)
+
+# what was changed
+- Server : When a client sends a message, the server prefixes it with the 
+  sender's IP and port (e.g. `127.0.0.1:49837: hi`) before broadcasting to all clients.
+- Server : Added a welcome message sent to each new client on connection.
+- Client : Display format updated to show `Name - From server: <message>`.
+
+# WHY
+without sender information, clients that receives the message cannot tell who sent which message 
+by including the sender SocketAddr  (IP + port) in the broadcast message, every client can see the origin 
+of each message.
+
